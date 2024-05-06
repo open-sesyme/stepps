@@ -1,0 +1,61 @@
+#login_page {
+    padding: 2em;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    form {
+        width: 100%;
+        
+        .stepps-logo {
+            width: 160px;
+            margin-bottom: 4em;
+        }
+
+        .text-bar {
+            margin-bottom: 3em;
+
+            h3 {
+                font-size: clamp(24px, 2.5vw, 30px);
+                font-weight: 400;
+                color: $black-color;
+                margin: 0;
+            }
+
+            p {
+                font-size: clamp(20px, 2.5vw, 25px);
+                color: $text-color;
+                margin: 0;
+            }
+        }
+
+        .action-btns {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .forgot-passwd-btn {
+                font-size: 14px;
+                border: 0;
+                padding: 0;
+                background-color: transparent;
+                color: $primary-color;
+            }
+        }
+
+        .bottom-text {
+            margin: 0;
+            margin-top: 5em;
+            color: $text-color;
+            font-size: 16px;
+            font-weight: 400;
+
+            a {
+                text-decoration: none;
+                outline: none;
+                color: $primary-color;
+            }
+        }
+    }
+}

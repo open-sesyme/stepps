@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import "~bootstrap/scss/bootstrap";
+
+$primary-color: #38B6FF;
+$dark-color: #022135;
+$black-color: #1a1a1a;
+$text-color: #777;
+$white-color: #ffffff;
+$transition-style: all 0.45s ease-in-out;
+
+.main-btn {
+    background-color: $primary-color;
+    color: $white-color;
+    font-size: 18px;
+    border-radius: 8px;
+    padding: 0.5em 2em;
+    border: 0;
+}
+
+.navigation {
+    padding: 0.75em 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+
+    img {
+        width: clamp(100px, 2.5vw, 200px);
+    }
+
+    button {
+        padding: 0;
+        border: 0;
+        background-color: transparent;
+        color: $dark-color;
+    }
+}
+
+@import 'login';
+@import 'tag_reset';
+@import 'register';
+@import 'home_page';

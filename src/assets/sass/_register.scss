@@ -1,0 +1,60 @@
+#register_page {
+    padding: 2em;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    form {
+        width: 100%;
+        .stepps-logo {
+            width: 160px;
+            margin-bottom: 3em;
+        }
+
+        .text-bar {
+            margin-bottom: 3em;
+
+            h3 {
+                font-size: clamp(24px, 2.5vw, 30px);
+                font-weight: 400;
+                color: $black-color;
+                margin: 0;
+            }
+
+            p {
+                font-size: clamp(20px, 2.5vw, 25px);
+                color: $text-color;
+                margin: 0;
+            }
+        }
+
+        .password-container {
+            position: relative;
+
+            button {
+                position: absolute;
+                right: 0.75em;
+                top: 0.75em;
+                padding: 0;
+                border: 0;
+                background-color: transparent;
+                color: $dark-color;
+            }
+        }
+
+        .bottom-text {
+            margin: 0;
+            margin-top: 3em;
+            color: $text-color;
+            font-size: 16px;
+            font-weight: 400;
+
+            a {
+                text-decoration: none;
+                outline: none;
+                color: $primary-color;
+            }
+        }
+    }
+}

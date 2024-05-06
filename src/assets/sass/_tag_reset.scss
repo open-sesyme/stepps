@@ -1,0 +1,28 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    box-sizing: border-box;
+    position: relative;
+}
+
+button {
+    outline: none;
+}
+
+input {
+    display: block;
+    margin-bottom: 1em;
+    padding: 0.75em 1em;
+    width: 100%;
+    border: 1px solid #b3b3b3;
+    border-radius: 8px;
+    outline: none;
+    transition: $transition-style;
+
+    &:focus {
+        border-color: $dark-color;
+        transition: $transition-style;
+    }
+}
