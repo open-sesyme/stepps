@@ -1,12 +1,16 @@
 import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB2AdRGRdwNJO_WakBHutFR5Af9oAFrg-k",
-  authDomain: "stepps-openses.firebaseapp.com",
-  projectId: "stepps-openses",
-  storageBucket: "stepps-openses.appspot.com",
-  messagingSenderId: "302374344371",
-  appId: "1:302374344371:web:6f3d3cac2a6d8eccbd42c6"
+	apiKey: "AIzaSyAe7TLNF1VR5CA7g0BUqcrqUv_s7mAbnL8",
+	authDomain: "stepps-81d47.firebaseapp.com",
+	projectId: "stepps-81d47",
+	storageBucket: "stepps-81d47.appspot.com",
+	messagingSenderId: "262772715931",
+	appId: "1:262772715931:web:c0e19bf4486d457042713e"
 };
 
 const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+export const firestore = getFirestore(app)

@@ -1,60 +1,71 @@
 #login_page {
-    padding: 2em;
+    width: 100vw;
     height: 100vh;
+    padding: 1em;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    position: relative;
 
-    form {
+    .form-container {
+        background-color: $white-color;
+        padding: 3em 1em;
         width: 100%;
-        
+        max-width: 400px;
+        border-radius: 20px;
+
         .stepps-logo {
-            width: 160px;
-            margin-bottom: 4em;
+            width: 150px;
+            margin: 0 auto;
+            display: block;
+            margin-bottom: 2em;
         }
 
         .text-bar {
+            text-align: center;
             margin-bottom: 3em;
-
+            
             h3 {
-                font-size: clamp(24px, 2.5vw, 30px);
+                font-size: 28px;
                 font-weight: 400;
-                color: $black-color;
                 margin: 0;
+                color: $dark-color;
             }
 
             p {
-                font-size: clamp(20px, 2.5vw, 25px);
-                color: $text-color;
-                margin: 0;
+                font-size: 16px;
+                color: $text-color;;
             }
         }
 
-        .action-btns {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            .forgot-passwd-btn {
-                font-size: 14px;
-                border: 0;
-                padding: 0;
-                background-color: transparent;
-                color: $primary-color;
-            }
+        .forgot-passwd-btn {
+            display: inline-block;
+            float: right;
+            margin-bottom: 3em;
+            font-size: 14px;
+            background-color: transparent;
+            outline: none;
+            border: 0;
+            padding: 0;
+            color: $primary-color;
         }
+    }
 
-        .bottom-text {
+    .footer-part {
+        position: absolute;
+        bottom: 1em;
+        left: 1em;
+        text-align: center;
+        width: calc(100% - 2em);
+
+        p {
             margin: 0;
-            margin-top: 5em;
             color: $text-color;
-            font-size: 16px;
-            font-weight: 400;
+            font-size: 14px;
 
             a {
                 text-decoration: none;
-                outline: none;
-                color: $primary-color;
+                color: $text-color;
             }
         }
     }
