@@ -1,22 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { publishRecognition } from '../actions/recognitionActions';
 import { POINTS } from '../constants/Points';
+import { fetchEmployees } from '../actions/employeeActions';
 
-const employees = [
-    {name: "John Doe", email: 'john@email.com', userID: 123456},
-    {name: "Jessica Nkosi", email: 'jess@email.com', userID: 2356},
-    {name: "Nkosazana Daughter", email: 'daughter@email.com', userID: 12336},
-    {name: "Jane Doe", email: 'jane@email.com', userID: 12556}
-]
 const CreateFeed = () => {
     const [selectedEmployee, setSelectedEmployee] = useState(null);
     const [selectedPoints, setSelectedPoints] = useState(null);
     const [selectedImpression, setSelectedImpression] = useState(null);
     const [message, setMessage] = useState('');
     const dispatch = useDispatch();
+    const { employeeList, loading, error} = useSelector(state => state.employee);
 
     const handleEmployeeChange = (event, selected) => {
         setSelectedEmployee(selected);
@@ -30,8 +26,8 @@ const CreateFeed = () => {
             points: selectedPoints,
             impression: selectedImpression,
             message,
-            dateCreate: Date.now(),
-            dateUpdate: Date.now(),
+            dateCreate: new Date().toISOString(),
+            dateUpdate: new Date().toISOString(),
         }
 
         dispatch(publishRecognition(recognitionData));
@@ -49,13 +45,17 @@ const CreateFeed = () => {
         setMessage('');
     }
 
+    useEffect(() => {
+        dispatch(fetchEmployees())
+    }, [dispatch]);
+
     return (
         <div className='create-feed'>
             <h4>Recognize someone</h4>
             <Autocomplete
                 disablePortal
                 id="combo-box-demo"
-                options={employees.map((option) => option.name)}
+                options={employeeList.map((option) => option.name)}
                 value={selectedEmployee}
                 onChange={handleEmployeeChange}
                 sx={{ width: 300 }}

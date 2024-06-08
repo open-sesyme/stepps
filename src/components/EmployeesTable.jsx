@@ -9,7 +9,7 @@ const EmployeesTable = () => {
 
     useEffect(() => {
         dispatch(fetchEmployees())
-    }, [dispatch])
+    }, [dispatch]);
     return (
         <>
             <div className="filter-part">
