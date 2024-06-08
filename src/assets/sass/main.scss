@@ -187,7 +187,21 @@ $transition-style: all 0.45s ease-in-out;
     }
 }
 
+.toast {
+    background-color: red;
+    position: absolute;
+    top: 80px;
+    right: 1em;
+    z-index: 9999;
+}
+
+.required-field:after {
+    content:" *";
+    color: red;
+}
+
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 @import 'login';
 @import 'tag_reset';
 @import 'home_page';
+@import 'employees';

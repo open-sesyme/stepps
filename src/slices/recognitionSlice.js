@@ -7,6 +7,7 @@ const initialState = {
   message: '',
   dateCreate: null,
   dateUpdate: null,
+  recognitionList: [],
 };
 
 const recognitionSlice = createSlice({
@@ -30,9 +31,27 @@ const recognitionSlice = createSlice({
       state.dateCreate = null;
       state.dateUpdate = null;
     },
+    fetchRecognitionStart: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    fetchRecognitionSuccess: (state, action) => {
+      state.loading = false;
+      state.recognitionList = action.payload;
+    },
+    fetchRecognitionFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
   },
 });
 
-export const { setRecognitionData, clearRecognitionData } = recognitionSlice.actions;
+export const { 
+  setRecognitionData,
+  clearRecognitionData,
+  fetchRecognitionStart,
+  fetchRecognitionSuccess,
+  fetchRecognitionFailure,
+} = recognitionSlice.actions;
 
 export default recognitionSlice.reducer;

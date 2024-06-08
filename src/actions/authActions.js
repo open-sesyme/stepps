@@ -9,7 +9,7 @@ export const signIn = (email, password) => async (
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         localStorage.setItem("user", JSON.stringify(userCredential.user));
-        dispatch(setLoading(false))
+        dispatch(setLoading(false));
         dispatch(setUser(userCredential.user.uid));
     } catch (error) {
         if (error.code === "auth/user-not-found") {

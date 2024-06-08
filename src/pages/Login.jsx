@@ -47,7 +47,7 @@ const Login = () => {
                 navigate('/home');
             }
         }
-    },[dispatch, user])
+    },[dispatch, user, navigate]);
 
     return (
         <div id="login_page">
