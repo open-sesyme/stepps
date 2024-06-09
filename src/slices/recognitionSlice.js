@@ -5,8 +5,9 @@ const initialState = {
   points: null,
   impression: null,
   message: '',
-  dateCreate: null,
-  dateUpdate: null,
+  createdBy: '',
+  dateCreated: null,
+  dateUpdated: null,
   recognitionList: [],
 };
 
@@ -15,21 +16,23 @@ const recognitionSlice = createSlice({
   initialState,
   reducers: {
     setRecognitionData: (state, action) => {
-      const { employee, points, impression, message, dateCreate, dateUpdate } = action.payload;
+      const { employee, points, impression, message, createdBy, dateCreated, dateUpdated } = action.payload;
       state.employee = employee;
       state.points = points;
       state.impression = impression;
       state.message = message;
-      state.dateCreate = dateCreate;
-      state.dateUpdate = dateUpdate;
+      state.createdBy = createdBy;
+      state.dateCreated = dateCreated;
+      state.dateUpdated = dateUpdated;
     },
     clearRecognitionData: (state) => {
       state.employee = null;
       state.points = null;
       state.impression = null;
       state.message = '';
-      state.dateCreate = null;
-      state.dateUpdate = null;
+      state.createdBy = '';
+      state.dateCreated = null;
+      state.dateUpdated = null;
     },
     fetchRecognitionStart: (state) => {
       state.loading = true;

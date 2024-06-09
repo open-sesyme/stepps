@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { publishRecognition } from '../actions/recognitionActions';
 import { POINTS } from '../constants/Points';
 import { fetchEmployees } from '../actions/employeeActions';
+import { selectCurrentUser } from '../slices/userSlice';
 
 const CreateFeed = () => {
     const [selectedEmployee, setSelectedEmployee] = useState(null);
@@ -13,21 +14,22 @@ const CreateFeed = () => {
     const [message, setMessage] = useState('');
     const dispatch = useDispatch();
     const { employeeList, loading, error} = useSelector(state => state.employee);
+    const currentUser = useSelector(selectCurrentUser);
 
     const handleEmployeeChange = (event, selected) => {
         setSelectedEmployee(selected);
     }
-
     const handlePublishRecognition = () => {
         // if (!selectedEmployee || !selectedPoints || !selectedImpression) return;
 
         const recognitionData = {
-            employee: selectedEmployee,
+            employee: selectedEmployee.id,
             points: selectedPoints,
             impression: selectedImpression,
             message,
-            dateCreate: new Date().toISOString(),
-            dateUpdate: new Date().toISOString(),
+            createdBy: currentUser?.email,
+            dateCreated: new Date().toISOString(),
+            dateUpdated: new Date().toISOString(),
         }
 
         dispatch(publishRecognition(recognitionData));
@@ -55,7 +57,8 @@ const CreateFeed = () => {
             <Autocomplete
                 disablePortal
                 id="combo-box-demo"
-                options={employeeList.map((option) => option.name)}
+                options={employeeList}
+                getOptionLabel={(option) => option.name}
                 value={selectedEmployee}
                 onChange={handleEmployeeChange}
                 sx={{ width: 300 }}

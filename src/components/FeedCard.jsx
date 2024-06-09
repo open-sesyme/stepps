@@ -23,10 +23,10 @@ const FeedCard = ({recognition}) => {
         <div className='feed-card shadow-sm'>
             <div className='header-part'>
                 <div className='user-names'>
-                    <p><span className='giver'>John Doe</span> gave <span className='point'>{recognition.points} points</span> to <span className='receiver'>{recognition.employee}</span></p>
+                    <p><span className='giver'>{recognition.createdByName}</span> gave <span className='point'>{recognition.points} points</span> to <span className='receiver'>{recognition.employeeByName}</span></p>
                 </div>
                 <div className='more'>
-                    <span className='time-created'>{formatDate(recognition?.dateCreate)}</span>
+                    <span className='time-created'>{formatDate(recognition?.dateCreated)}</span>
                     <button type='button' className='more-opt'><i className='bi bi-three-dots'></i></button>
                 </div>
             </div>

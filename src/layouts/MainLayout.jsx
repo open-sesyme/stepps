@@ -12,7 +12,7 @@ const MainLayout = () => {
   const user = useSelector(selectUser);
   
   useEffect(() => {
-    dispatch(fetchUser(user.email))
+    dispatch(fetchUser(user?.email))
   }, [dispatch, user])
   return (
     <div className='main-layout'>

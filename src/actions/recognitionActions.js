@@ -6,7 +6,7 @@ import {
   fetchRecognitionStart 
 } from '../slices/recognitionSlice';
 import { firestore } from '../config/firebase';
-import {collection, addDoc, updateDoc, doc, arrayUnion, arrayRemove, query, onSnapshot, getDoc } from "firebase/firestore";
+import {collection, addDoc, updateDoc, doc, arrayUnion, arrayRemove, query, onSnapshot, getDoc, orderBy, increment } from "firebase/firestore";
 import { showToast } from '../slices/toastSlice';
 
 export const setRecognition = (data) => (dispatch) => {
@@ -22,6 +22,12 @@ const collectionRef = collection(firestore, 'recognitions');
 export const publishRecognition = (recognitionData) => async (dispatch) => {
     try {
       await addDoc(collectionRef, recognitionData);
+
+      const employeeRef = doc(firestore, 'employees', recognitionData.employee);
+      await updateDoc(employeeRef, {
+          points: increment(recognitionData.points)
+      });
+
       dispatch(clearRecognition());
       dispatch(showToast({ message: "Recognition created successfully", success: true }));
     } catch (error) {
@@ -29,15 +35,27 @@ export const publishRecognition = (recognitionData) => async (dispatch) => {
     }
 };
 
+const getUserDetails = async (firestore, userId) => {
+  const userRef = doc(firestore, 'employees', userId);
+  const userDoc = await getDoc(userRef);
+  return userDoc.exists() ? userDoc.data().name : 'Unknown Employee';
+};
+
 export const fetchRecognition = () => async (dispatch) => {
   dispatch(fetchRecognitionStart());
   try {
-    let q = query(collectionRef);
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const recognitionList = snapshot.docs.map((doc) => {
-        let recognitionData = doc.data();
-        return {id: doc.id, ...recognitionData}
-      });
+    let q = query(collectionRef, orderBy("dateCreated", "desc"));
+    const unsubscribe = onSnapshot(q, async (snapshot) => {
+      const recognitionList = await Promise.all(snapshot.docs.map(async(docx) => {
+        let recognitionData = docx.data();
+
+        const createdByName = await getUserDetails(firestore, recognitionData.createdBy);
+
+        const employeeByName = await getUserDetails(firestore, recognitionData.employee);
+
+        return {id: docx.id, ...recognitionData, createdByName, employeeByName}
+      }));
+
       dispatch(fetchRecognitionSuccess(recognitionList));
     });
 

@@ -18,7 +18,7 @@ export const addEmployeeToFirestore = (employeeData) => async (dispatch) => {
         const docRef = doc(employeeCollectionRef, employeeData.email);
         const dateCreated = new Date().toISOString();
         const cleanData = removeEmptyFields(employeeData);
-        await setDoc(docRef, { ...cleanData, dateCreated });
+        await setDoc(docRef, { ...cleanData, dateCreated, points: 0 });
         dispatch(clearEmployeeData());
     } catch (error) {
         console.error("Error adding employee: ", error);
