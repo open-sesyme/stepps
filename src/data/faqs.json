@@ -1,0 +1,132 @@
+{
+    "faqs": [
+      {
+        "category": "General",
+        "questions": [
+          {
+            "question": "What is this app for?",
+            "answer": "This app is designed to manage employee information, recognize employee achievements, and facilitate positive feedback within an organization."
+          },
+          {
+            "question": "Who can use this app?",
+            "answer": "The app can be used by HR managers, team leaders, and employees within an organization."
+          },
+          {
+            "question": "How do I log in to the app?",
+            "answer": "You can log in using your registered email and password. If you are a new employee, you'll receive an email with a temporary password that you can change upon first login."
+          }
+        ]
+      },
+      {
+        "category": "Employee Management",
+        "questions": [
+          {
+            "question": "How can I add a new employee?",
+            "answer": "You can add a new employee by filling out the form under the \"Add Employee\" section. Ensure you provide all required fields and validate the email format."
+          },
+          {
+            "question": "Can I add multiple employees at once?",
+            "answer": "Yes, you can upload a CSV file with employee details. Make sure the CSV follows the provided template for successful uploads."
+          },
+          {
+            "question": "What should be included in the CSV file?",
+            "answer": "The CSV file should include columns for Full Name, Email, Job Title, Department/Unit, Phone, and Employment Date. Only Full Name and Email are mandatory."
+          },
+          {
+            "question": "How do I update an employee’s information?",
+            "answer": "Navigate to the employee's profile from the employee list, click on the edit button, update the necessary fields, and save the changes."
+          },
+          {
+            "question": "What happens if I enter incorrect information?",
+            "answer": "If incorrect information is entered, you can edit the employee details to correct it. For any critical errors, please contact the support team."
+          }
+        ]
+      },
+      {
+        "category": "Employee Recognition",
+        "questions": [
+          {
+            "question": "How do I recognize an employee?",
+            "answer": "Go to the \"Recognition\" section, select the employee you want to recognize, write a recognition message, and submit it."
+          },
+          {
+            "question": "Can other employees see the recognitions?",
+            "answer": "Yes, all recognitions are visible to other employees unless set to private by the recognizing person."
+          },
+          {
+            "question": "Can I like a recognition?",
+            "answer": "Yes, employees can like recognitions to show their appreciation and support."
+          },
+          {
+            "question": "How can I view the recognitions I’ve received?",
+            "answer": "You can view your recognitions in the \"My Recognitions\" section under your profile."
+          }
+        ]
+      },
+      {
+        "category": "Feedback",
+        "questions": [
+          {
+            "question": "How can I give feedback?",
+            "answer": "Navigate to the \"Feedback\" section, select the recipient, write your feedback, and submit it. Feedback can be anonymous if preferred."
+          },
+          {
+            "question": "Can I view the feedback given to me?",
+            "answer": "Yes, you can view the feedback given to you in the \"My Feedback\" section under your profile."
+          },
+          {
+            "question": "Is the feedback anonymous?",
+            "answer": "Feedback can be anonymous based on the sender's preference."
+          }
+        ]
+      },
+      {
+        "category": "Notifications",
+        "questions": [
+          {
+            "question": "How will I know if I’ve received recognition or feedback?",
+            "answer": "You will receive email notifications and in-app notifications for any new recognitions or feedback."
+          },
+          {
+            "question": "Can I customize my notification settings?",
+            "answer": "Yes, you can customize your notification settings in the \"Settings\" section of your profile."
+          }
+        ]
+      },
+      {
+        "category": "Security and Privacy",
+        "questions": [
+          {
+            "question": "How is my data protected?",
+            "answer": "Your data is protected using industry-standard encryption and security practices. We prioritize your privacy and data security."
+          },
+          {
+            "question": "Who can see my personal information?",
+            "answer": "Your personal information is visible to HR managers and relevant team leaders. Other employees can only see information that you choose to make public."
+          },
+          {
+            "question": "How can I reset my password?",
+            "answer": "You can reset your password by clicking on the \"Forgot Password\" link on the login page. An email will be sent to you with instructions to reset your password."
+          }
+        ]
+      },
+      {
+        "category": "Troubleshooting",
+        "questions": [
+          {
+            "question": "I didn’t receive my temporary password. What should I do?",
+            "answer": "Check your spam/junk folder. If you still can’t find the email, contact your HR manager or the support team."
+          },
+          {
+            "question": "The app is not working correctly. What should I do?",
+            "answer": "Try refreshing the page or clearing your browser cache. If the issue persists, contact the support team with details of the problem."
+          },
+          {
+            "question": "How can I contact support?",
+            "answer": "You can contact support through the \"Help\" section in the app or by emailing support@stepps.co.za."
+          }
+        ]
+      }
+    ]
+  }
+  

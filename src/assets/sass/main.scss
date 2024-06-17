@@ -7,7 +7,7 @@ $dark-color: #203365;
 $black-color: #1a1a1a;
 $white-color: #ffffff;
 $bg-color: #ecf1fd;
-$transition-style: all 0.45s ease-in-out;
+$transition-style: all .45s ease-in-out;
 
 .main-btn {
     background-color: $primary-color;
@@ -205,3 +205,5 @@ $transition-style: all 0.45s ease-in-out;
 @import 'tag_reset';
 @import 'home_page';
 @import 'employees';
+@import 'profile';
+@import 'support';

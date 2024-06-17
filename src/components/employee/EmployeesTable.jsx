@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { fetchEmployees } from '../actions/employeeActions';
+import { fetchEmployees } from '../../actions/employeeActions';
 
 const EmployeesTable = () => {
     const dispatch = useDispatch();
@@ -43,13 +43,13 @@ const EmployeesTable = () => {
                         employeeList.map((employee, index) => (
                         <div className="table-row" key={index}>
                             <div className="table-item"><Link to={`/profile/${employee.id}`}>{employee.name}</Link></div>
-                            <div className="table-item">{employee.email}</div>
-                            <div className="table-item">{employee.jobTitle}</div>
-                            <div className="table-item">{employee.department}</div>
-                            <div className="table-item">{employee.phone}</div>
-                            <div className="table-item">{employee.points}</div>
-                            <div className="table-item">{employee.employmentDate}</div>
-                            <div className="table-item">{employee.lastActive}</div>
+                            <div className="table-item" title={employee.email}>{employee.email}</div>
+                            <div className="table-item" title={employee.jobTitle}>{employee.jobTitle}</div>
+                            <div className="table-item" title={employee.department}>{employee.department}</div>
+                            <div className="table-item" title={employee.phone}>{employee.phone}</div>
+                            <div className="table-item" title={employee.points}>{employee.points}</div>
+                            <div className="table-item" title={employee.employmentDate}>{employee.employmentDate}</div>
+                            <div className="table-item" title={employee.lastActive}>{employee.lastActive}</div>
                         </div>
                         ))
                     ) : (

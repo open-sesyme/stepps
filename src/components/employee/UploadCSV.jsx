@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Papa from 'papaparse';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addEmployeesFromCSV } from '../actions/employeeActions';
+import { addEmployeesFromCSV } from '../../actions/employeeActions';
 
 const UploadCSV = () => {
     const dispatch = useDispatch();
@@ -55,7 +55,7 @@ const UploadCSV = () => {
     };
 
     const goBack = () => {
-        navigate("/employees");
+        navigate(-1);
     }
     return (
         <div className='upload-csv'>

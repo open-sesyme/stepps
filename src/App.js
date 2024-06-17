@@ -4,13 +4,16 @@ import router from "./routes";
 import { Provider} from "react-redux";
 import store from './store/store'
 import ToastWrapper from "./components/ToastWrapper";
+import UserLoader from "./components/UserLoader";
 
 const App = () => {
   
   return(
     <Provider store={store}>
-      <RouterProvider router={router} />
-	    <ToastWrapper />
+      <UserLoader>
+        <RouterProvider router={router} />
+        <ToastWrapper />
+      </UserLoader>
     </Provider>
   )
 }

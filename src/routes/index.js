@@ -4,8 +4,11 @@ import HomePage from "../pages/HomePage";
 import MainLayout from "../layouts/MainLayout";
 import PrivateRoute from "../handlers/privateRoute";
 import Employees from "../pages/Employees";
-import EmployeeList from "../components/EmployeeList";
-import UploadCSV from "../components/UploadCSV";
+import EmployeeList from "../components/employee/EmployeeList";
+import UploadCSV from "../components/employee/UploadCSV";
+import Profile from "../pages/Profile";
+import HonorsRoll from "../pages/HonorsRoll";
+import Support from "../pages/Support";
 
 const router = createBrowserRouter(
     createRoutesFromElements([
@@ -16,6 +19,9 @@ const router = createBrowserRouter(
                 <Route key="employee-list" path="" element={<EmployeeList />} />,
                 <Route key="create-multiple" path="create-employees" element={<UploadCSV />} />,
             </Route>,
+            <Route key="profile" path="/profile" element={<PrivateRoute> <Profile /> </PrivateRoute>} />,
+            <Route key="honors-roll" path="/honors-roll" element={<PrivateRoute> <HonorsRoll /> </PrivateRoute>} />,
+            <Route key="support" path="/support" element={<PrivateRoute> <Support /> </PrivateRoute>} />,
         </Route>
     ])
 );

@@ -1,4 +1,4 @@
-import { firestore } from '../config/firebase';
+import { auth, firestore } from '../config/firebase';
 import { doc, setDoc, collection, query, onSnapshot } from 'firebase/firestore';
 import { 
     clearEmployeeData,
@@ -6,6 +6,7 @@ import {
     fetchEmployeeSuccess,
     fetchEmployeeFailure,
 } from '../slices/employeeSlice'
+import { createUserWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
 
 const employeeCollectionRef = collection(firestore, 'employees');
 
@@ -15,10 +16,20 @@ const removeEmptyFields = (obj) => {
 
 export const addEmployeeToFirestore = (employeeData) => async (dispatch) => {
     try {
-        const docRef = doc(employeeCollectionRef, employeeData.email);
+        const { email, ...rest } = employeeData;
+        const password = Math.random().toString(36).slice(-8);
+
+        const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredentials.user;
+
+        const docRef = doc(employeeCollectionRef, email);
         const dateCreated = new Date().toISOString();
-        const cleanData = removeEmptyFields(employeeData);
-        await setDoc(docRef, { ...cleanData, dateCreated, points: 0 });
+        const cleanData = removeEmptyFields(...rest);
+        await setDoc(docRef, { ...cleanData, email, dateCreated, points: 0 });
+
+        await sendPasswordResetEmail(auth, email);
+        console.log("User successfully created and email sent", user);
+        
         dispatch(clearEmployeeData());
     } catch (error) {
         console.error("Error adding employee: ", error);
@@ -47,8 +58,14 @@ export const fetchEmployees = () => async (dispatch) => {
 export const addEmployeesFromCSV = (employees) => async (dispatch) => {
     try {
         const addEmployees = employees.map(async (employee) => {
+            const { email, ...rest } = employee;
+            const password = Math.random().toString(36).slice(-8);
+
+            await createUserWithEmailAndPassword(auth, email, password);
             const employeeDoc = doc(firestore, 'employees', employee.email);
-            await setDoc(employeeDoc, employee);
+            await setDoc(employeeDoc, {...rest, email, points: 0});
+
+            await sendPasswordResetEmail(auth, email);
         });
 
         await Promise.all(addEmployees);

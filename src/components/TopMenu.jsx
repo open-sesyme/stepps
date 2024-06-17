@@ -10,8 +10,8 @@ const TopMenu = () => {
   const error = useSelector(state => state.user.error)
   return (
     <div className='top-menu'>
-        {error && <p>{error}</p>}
-        {loading && <p>Loading...</p>}
+        {error && <p className='m-0'>{error}</p>}
+        {loading && <p className='m-0'>Loading...</p>}
         {currentUser && <h4>Hello, {currentUser?.name}</h4>}
         
         <ul className="list-unstyled">

@@ -13,7 +13,7 @@ const MainLayout = () => {
   
   useEffect(() => {
     dispatch(fetchUser(user?.email))
-  }, [dispatch, user])
+  }, [dispatch, user]);
   return (
     <div className='main-layout'>
         <SideBar />

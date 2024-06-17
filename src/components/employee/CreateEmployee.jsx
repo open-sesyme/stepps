@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { addEmployeeToFirestore } from '../actions/employeeActions'
+import { addEmployeeToFirestore } from '../../actions/employeeActions'
 import { useDispatch } from 'react-redux'
 
 const CreateEmployee = ({onClose}) => {

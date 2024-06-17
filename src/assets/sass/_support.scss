@@ -1,0 +1,125 @@
+#support_page {
+    .header-part {
+        // background-color: $white-color;
+        background-image: linear-gradient(90deg, rgb(116, 216, 252),rgb(156, 153, 254));
+        height: 200px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 3em;
+
+        h1 {
+            margin: 0;
+            font-size: 60px;
+            font-weight: 900;
+            color: $white-color;
+        }
+    }
+
+    .list-of-tabs {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 2em;
+        margin-bottom: 3em;
+
+        .item {
+            background-color: $white-color;
+            border-radius: 20px;
+            text-align: center;
+            padding: 1em;
+            width: 200px;
+            cursor: pointer;
+
+            .icon {
+                width: 50px;
+                height: 50px;
+                background-color: $dark-color;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50px;
+                margin: 0 auto;
+                margin-bottom: 1em;
+
+                i {
+                    color: $white-color;
+                    font-size: 30px;
+                    margin: 0 !important;
+                }
+            }
+
+            h4 {
+                font-size: 18px;
+                margin: 0;
+                font-weight: 700;
+                color: $dark-color;
+            }
+        }
+    }
+
+    .faqs {
+        // background-color: $white-color;
+        border-radius: 8px;
+        padding: 2em;
+
+        .title {
+            text-align: center;
+            margin-bottom: 2em;
+
+            h4 {
+                font-size: 26px;
+                font-weight: 700;
+                margin: 0;
+                color: $dark-color;
+            }
+
+            p {
+                font-size: 16px;
+                margin: 0;
+                color: $text-color;
+            }
+        }
+
+        .faq-category {
+            margin: 0 auto;
+            margin-bottom: 2em;
+            width: 100%;
+            max-width: 500px;
+
+            .category-name {
+                font-size: 18px;
+                font-weight: 700;
+                margin: 0;
+                margin-bottom: 15px;
+                color: $dark-color;
+            }
+
+            .faq-item {
+                background-color: $white-color;
+                margin-bottom: 10px;
+                border-radius: 15px;
+                padding: 10px 15px;
+                cursor: pointer;
+                transition: $transition-style;
+
+                h4 {
+                    font-size: 20px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin: 0;
+                    color: $dark-color;
+                }
+
+                p {
+                    margin: 0;
+                    margin-top: 1em;
+                    color: $text-color;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}

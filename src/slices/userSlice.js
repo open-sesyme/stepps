@@ -15,6 +15,7 @@ const userSlice = createSlice({
             state.currentUser = null;
         },
         fetchUserSuccess: (state, action) => {
+            state.error = null;
             state.loading = false;
             state.currentUser = action.payload;
         },

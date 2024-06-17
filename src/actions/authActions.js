@@ -1,6 +1,7 @@
 import { setUser, setError, setLoading, logout } from "../slices/authSlice";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth"
 import { auth } from "../config/firebase";
+import { fetchUser } from "./userActions";
 
 export const signIn = (email, password) => async (
     dispatch
@@ -11,6 +12,7 @@ export const signIn = (email, password) => async (
         localStorage.setItem("user", JSON.stringify(userCredential.user));
         dispatch(setLoading(false));
         dispatch(setUser(userCredential.user.uid));
+        dispatch(fetchUser(userCredential.user.email));
     } catch (error) {
         if (error.code === "auth/user-not-found") {
             dispatch(setError("User not found."));
