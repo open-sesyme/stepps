@@ -24,7 +24,7 @@ export const addEmployeeToFirestore = (employeeData) => async (dispatch) => {
 
         const docRef = doc(employeeCollectionRef, email);
         const dateCreated = new Date().toISOString();
-        const cleanData = removeEmptyFields(...rest);
+        const cleanData = removeEmptyFields(rest);
         await setDoc(docRef, { ...cleanData, email, dateCreated, points: 0 });
 
         await sendPasswordResetEmail(auth, email);

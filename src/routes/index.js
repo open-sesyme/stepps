@@ -9,6 +9,7 @@ import UploadCSV from "../components/employee/UploadCSV";
 import Profile from "../pages/Profile";
 import HonorsRoll from "../pages/HonorsRoll";
 import Support from "../pages/Support";
+import TestPage from "../pages/TestPage";
 
 const router = createBrowserRouter(
     createRoutesFromElements([
@@ -22,7 +23,8 @@ const router = createBrowserRouter(
             <Route key="profile" path="/profile" element={<PrivateRoute> <Profile /> </PrivateRoute>} />,
             <Route key="honors-roll" path="/honors-roll" element={<PrivateRoute> <HonorsRoll /> </PrivateRoute>} />,
             <Route key="support" path="/support" element={<PrivateRoute> <Support /> </PrivateRoute>} />,
-        </Route>
+        </Route>,
+        <Route key="testing" path="/test-file" element={<TestPage />} />,
     ])
 );
 

@@ -72,7 +72,7 @@ $transition-style: all .45s ease-in-out;
     column-gap: 1px;
 
     .sidebar {
-        width: 15vw;
+        width: 17vw;
         background-color: $white-color;
         padding: 2em;
         position: relative;
@@ -200,6 +200,14 @@ $transition-style: all .45s ease-in-out;
     color: red;
 }
 
+.form-error {
+    background-color: rgba(255, 0, 0, 0.3);
+    border-left: 3px solid red;
+    padding: 10px 15px;
+    color: $dark-color;
+
+}
+
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 @import 'login';
 @import 'tag_reset';
@@ -207,3 +215,4 @@ $transition-style: all .45s ease-in-out;
 @import 'employees';
 @import 'profile';
 @import 'support';
+@import 'testStyle';

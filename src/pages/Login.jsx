@@ -57,13 +57,14 @@ const Login = () => {
                         <h3>Hello Again!</h3>
                         <p>Sign in to continue with <b>stepps</b></p>
                     </div>
+                    {error && <p className='form-error'>{error}</p>}
                     <input type="email" placeholder="Email" value={email} onChange={(e) => {setEmail(e.target.value); dispatch(setError(""))}}/>
                     <input type="password" placeholder="Password" value={password} onChange={(e) => {setPassword(e.target.value); dispatch(setError(""));}} />
                     <button type='button' className='forgot-passwd-btn'>Forgot password?</button>
                     <button type="submit" className='main-btn' onClick={handleLogin}>
                         {loading ? 'Loading...' : 'Login'}
                     </button>
-                    {error && <p>{error}</p>}
+                    
                 
             </div>
 
