@@ -53,7 +53,7 @@ const Profile = () => {
                         onChange={handleChange}
                     />
                     <label htmlFor="profile_pic"><i className='bi bi-image'></i> Change Profile Image</label>
-                    <button type='button' className='update-pp main-btn' onClick={updateProfilePic}>Save Image</button>
+                    {profilePic && <button type='button' className='update-pp main-btn' onClick={updateProfilePic}>Save Image</button>}
                 </div>
                 <div className="details-side">
                     <div className="row">
