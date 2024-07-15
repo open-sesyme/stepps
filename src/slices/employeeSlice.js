@@ -1,13 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  employees: {
+  employee: {
     name: '',
     email: '',
     jobTitle: '',
     department: '',
     phone: '',
     employmentDate: '',
+    profilePicture: '',
   },
   employeeList: [],
   loading: false,
@@ -29,6 +30,7 @@ const employeeSlice = createSlice({
                 department: '',
                 phone: '',
                 employmentDate: '',
+                profilePicture: '',
             };
         },
         fetchEmployeeStart: (state) => {
@@ -43,6 +45,13 @@ const employeeSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         },
+        updateProfilePicture: (state, action) => {
+            const { email, profilePicture } = action.payload;
+            const employee = state.employeeList.find(emp => emp.email === email);
+            if (employee) {
+                employee.profilePicture = profilePicture;
+            }
+        },
     },
 });
 
@@ -52,6 +61,7 @@ export const {
     fetchEmployeeStart,
     fetchEmployeeSuccess,
     fetchEmployeeFailure,
+    updateProfilePicture,
 } = employeeSlice.actions;
 
 export default employeeSlice.reducer;

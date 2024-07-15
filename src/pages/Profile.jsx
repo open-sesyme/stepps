@@ -1,13 +1,37 @@
 import React, { useState } from 'react';
 import { selectCurrentUser } from '../slices/userSlice';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateProfilePicture } from '../actions/employeeActions';
 
 const Profile = () => {
     const currentUser = useSelector(selectCurrentUser);
     const [showDates, setShowDate] = useState(false);
+    const defaultProfilePic = "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/321289941/original/ef78d4523ccbfea028c454417c2f3504572a3de5/draw-avatar-cartoon-from-your-photo.jpg";
+    const [profilePic, setProfilePic] = useState(currentUser?.profilePicture || defaultProfilePic);
+    // const [newProfilePic, setNewProfilePic] = useState(null);
+    const dispatch = useDispatch();
 
     const handleShowDates = (id) => {
         setShowDate(!showDates)
+    }
+
+    const handleChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = () => {
+            setProfilePic(reader.result);
+          };
+          reader.readAsDataURL(file);
+        }
+    };
+
+    const updateProfilePic = () => {
+        console.log(currentUser.email)
+        if (profilePic) {
+            setProfilePic(profilePic);
+            dispatch(updateProfilePicture(currentUser.email, profilePic));
+        }
     }
 
     return (
@@ -18,10 +42,18 @@ const Profile = () => {
             <div className='user-details'>
                 <div className='profile-pic-side'>
                     <div className="profile-pic">
-                        <img src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/321289941/original/ef78d4523ccbfea028c454417c2f3504572a3de5/draw-avatar-cartoon-from-your-photo.jpg" alt="User Profile" />
+                    <img src={profilePic} alt="User Profile" />
                     </div>
-                    <input type="file" name="profile_pic" id="profile_pic"  accept='image/*' hidden/>
+                    <input 
+                        type="file" 
+                        name="profile_pic" 
+                        id="profile_pic"  
+                        accept='image/*' 
+                        hidden 
+                        onChange={handleChange}
+                    />
                     <label htmlFor="profile_pic"><i className='bi bi-image'></i> Change Profile Image</label>
+                    <button type='button' className='update-pp main-btn' onClick={updateProfilePic}>Save Image</button>
                 </div>
                 <div className="details-side">
                     <div className="row">

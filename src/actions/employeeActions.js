@@ -1,10 +1,11 @@
 import { auth, firestore } from '../config/firebase';
-import { doc, setDoc, collection, query, onSnapshot } from 'firebase/firestore';
+import { doc, setDoc, collection, query, onSnapshot, updateDoc } from 'firebase/firestore';
 import { 
     clearEmployeeData,
     fetchEmployeeStart,
     fetchEmployeeSuccess,
     fetchEmployeeFailure,
+    updateProfilePicture as updateProfilePictureAction
 } from '../slices/employeeSlice'
 import { createUserWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
 
@@ -73,3 +74,14 @@ export const addEmployeesFromCSV = (employees) => async (dispatch) => {
         console.error("Error adding from CSV: ", error)
     }
 } 
+
+export const updateProfilePicture = (email, profilePictureUrl) => async (dispatch) => {
+    try {
+        const employeeDocRef = doc(firestore, 'employees', email);
+        await updateDoc(employeeDocRef, { profilePicture: profilePictureUrl });
+        dispatch(updateProfilePictureAction({ email, profilePicture: profilePictureUrl }));
+
+    } catch (error) {
+        console.error("Error updating profile picture: ", error);
+    }
+};
