@@ -10,6 +10,7 @@ import Profile from "../pages/Profile";
 import HonorsRoll from "../pages/HonorsRoll";
 import Support from "../pages/Support";
 import TestPage from "../pages/TestPage";
+import ResetPassword from "../pages/ResetPassword";
 
 const router = createBrowserRouter(
     createRoutesFromElements([
@@ -24,6 +25,7 @@ const router = createBrowserRouter(
             <Route key="honors-roll" path="/honors-roll" element={<PrivateRoute> <HonorsRoll /> </PrivateRoute>} />,
             <Route key="support" path="/support" element={<PrivateRoute> <Support /> </PrivateRoute>} />,
         </Route>,
+        <Route key="reset-password" path="reset-password" element={<ResetPassword />} />,
         <Route key="testing" path="/test-file" element={<TestPage />} />,
     ])
 );

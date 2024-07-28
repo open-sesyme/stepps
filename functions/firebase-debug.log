@@ -1,0 +1,168 @@
+[debug] [2024-07-27T22:30:49.720Z] ----------------------------------------------------------------------
+[debug] [2024-07-27T22:30:49.721Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\sndabeni\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions --debug
+[debug] [2024-07-27T22:30:49.722Z] CLI Version:   13.12.0
+[debug] [2024-07-27T22:30:49.722Z] Platform:      win32
+[debug] [2024-07-27T22:30:49.722Z] Node Version:  v18.18.2
+[debug] [2024-07-27T22:30:49.723Z] Time:          Sun Jul 28 2024 00:30:49 GMT+0200 (South Africa Standard Time)
+[debug] [2024-07-27T22:30:49.723Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-07-27T22:30:49.786Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-07-27T22:30:49.788Z] > authorizing via signed-in user (simamkele.ndabani@gmail.com)
+[debug] [2024-07-27T22:30:49.789Z] [iam] checking project stepps-81d47 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2024-07-27T22:30:49.791Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/stepps-81d47:testIamPermissions [none]
+[debug] [2024-07-27T22:30:49.792Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/stepps-81d47:testIamPermissions x-goog-quota-user=projects/stepps-81d47
+[debug] [2024-07-27T22:30:49.793Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/stepps-81d47:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-07-27T22:30:52.413Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/stepps-81d47:testIamPermissions 200
+[debug] [2024-07-27T22:30:52.414Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/stepps-81d47:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-07-27T22:30:52.416Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/stepps-81d47/serviceAccounts/stepps-81d47@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2024-07-27T22:30:52.417Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/stepps-81d47/serviceAccounts/stepps-81d47@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2024-07-27T22:30:54.365Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/stepps-81d47/serviceAccounts/stepps-81d47@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2024-07-27T22:30:54.367Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/stepps-81d47/serviceAccounts/stepps-81d47@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'stepps-81d47'...
+[info] 
+[info] i  deploying functions 
+[debug] [2024-07-27T22:30:54.379Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/stepps-81d47 [none]
+[debug] [2024-07-27T22:30:55.377Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/stepps-81d47 200
+[debug] [2024-07-27T22:30:55.377Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/stepps-81d47 {"projectId":"stepps-81d47","projectNumber":"262772715931","displayName":"stepps","name":"projects/stepps-81d47","resources":{"hostingSite":"stepps-81d47"},"state":"ACTIVE","etag":"1_5435c50d-af9b-4ce2-a298-553d756b0031"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2024-07-27T22:30:55.379Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/cloudfunctions.googleapis.com [none]
+[debug] [2024-07-27T22:30:55.380Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/stepps-81d47
+[debug] [2024-07-27T22:30:55.381Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/runtimeconfig.googleapis.com [none]
+[debug] [2024-07-27T22:30:55.381Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/stepps-81d47
+[debug] [2024-07-27T22:30:55.382Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/cloudbuild.googleapis.com [none]
+[debug] [2024-07-27T22:30:55.382Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/cloudbuild.googleapis.com x-goog-quota-user=projects/stepps-81d47
+[debug] [2024-07-27T22:30:55.384Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/artifactregistry.googleapis.com [none]
+[debug] [2024-07-27T22:30:55.384Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/artifactregistry.googleapis.com x-goog-quota-user=projects/stepps-81d47
+[debug] [2024-07-27T22:30:57.550Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/cloudbuild.googleapis.com 200
+[debug] [2024-07-27T22:30:57.550Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/cloudbuild.googleapis.com [omitted]
+[info] +  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2024-07-27T22:30:57.552Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/runtimeconfig.googleapis.com 200
+[debug] [2024-07-27T22:30:57.552Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2024-07-27T22:30:57.554Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/artifactregistry.googleapis.com 200
+[debug] [2024-07-27T22:30:57.555Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/artifactregistry.googleapis.com [omitted]
+[info] +  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2024-07-27T22:30:57.556Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/cloudfunctions.googleapis.com 200
+[debug] [2024-07-27T22:30:57.557Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/cloudfunctions.googleapis.com [omitted]
+[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2024-07-27T22:30:57.558Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/stepps-81d47/adminSdkConfig [none]
+[debug] [2024-07-27T22:30:58.363Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/stepps-81d47/adminSdkConfig 200
+[debug] [2024-07-27T22:30:58.364Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/stepps-81d47/adminSdkConfig {"projectId":"stepps-81d47","storageBucket":"stepps-81d47.appspot.com"}
+[debug] [2024-07-27T22:30:58.366Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/stepps-81d47/configs [none]
+[debug] [2024-07-27T22:30:59.347Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/stepps-81d47/configs 200
+[debug] [2024-07-27T22:30:59.348Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/stepps-81d47/configs {}
+[debug] [2024-07-27T22:30:59.351Z] Validating nodejs source
+[debug] [2024-07-27T22:31:01.103Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^12.1.0",
+    "firebase-functions": "^5.0.0"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2024-07-27T22:31:01.110Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2024-07-27T22:31:01.112Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-07-27T22:31:01.174Z] Found firebase-functions binary at 'C:\Users\sndabeni\Downloads\all about stepps\stepps\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8515
+
+[debug] [2024-07-27T22:31:01.845Z] Got response from /__/functions.yaml {"endpoints":{"monthlyTopEmployees":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"scheduleTrigger":{"schedule":"0 0 1 * *","retryConfig":{"retryCount":null,"maxDoublings":null,"maxRetrySeconds":null,"minBackoffSeconds":null,"maxBackoffSeconds":null},"timeZone":null},"entryPoint":"monthlyTopEmployees"},"captureYearlyTopEmployees":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"scheduleTrigger":{"schedule":"23 59 30 11 *","retryConfig":{"retryCount":null,"maxDoublings":null,"maxRetrySeconds":null,"minBackoffSeconds":null,"maxBackoffSeconds":null},"timeZone":null},"entryPoint":"captureYearlyTopEmployees"}},"specVersion":"v1alpha1","requiredAPIs":[{"api":"cloudscheduler.googleapis.com","reason":"Needed for scheduled functions."}]}
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged C:\Users\sndabeni\Downloads\all about stepps\stepps\functions (61.21 KB) for uploading 
+[debug] [2024-07-27T22:31:01.911Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/stepps-81d47/locations/-/functions [none]
+[debug] [2024-07-27T22:31:03.277Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/stepps-81d47/locations/-/functions 200
+[debug] [2024-07-27T22:31:03.277Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/stepps-81d47/locations/-/functions {}
+[debug] [2024-07-27T22:31:03.282Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/stepps-81d47/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2024-07-27T22:31:04.883Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/stepps-81d47/locations/-/functions 200
+[debug] [2024-07-27T22:31:04.884Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/stepps-81d47/locations/-/functions {"functions":[{"name":"projects/stepps-81d47/locations/us-central1/functions/monthlyTopEmployees","buildConfig":{"build":"projects/262772715931/locations/us-central1/builds/65e58dc0-3c3b-4331-9279-bf031867f9d5","runtime":"nodejs18","entryPoint":"monthlyTopEmployees","source":{"storageSource":{"bucket":"gcf-v2-sources-262772715931-us-central1","object":"monthlyTopEmployees/function-source.zip","generation":"1722119348077432"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"dockerRepository":"projects/stepps-81d47/locations/us-central1/repositories/gcf-artifacts","sourceProvenance":{"resolvedStorageSource":{"bucket":"gcf-v2-sources-262772715931-us-central1","object":"monthlyTopEmployees/function-source.zip","generation":"1722119348077432"}},"dockerRegistry":"ARTIFACT_REGISTRY","automaticUpdatePolicy":{}},"serviceConfig":{"service":"projects/stepps-81d47/locations/us-central1/services/monthlytopemployees","timeoutSeconds":60,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"stepps-81d47\",\"storageBucket\":\"stepps-81d47.appspot.com\"}","GCLOUD_PROJECT":"stepps-81d47","EVENTARC_CLOUD_EVENT_SOURCE":"projects/stepps-81d47/locations/us-central1/services/monthlyTopEmployees","FUNCTION_TARGET":"monthlyTopEmployees","LOG_EXECUTION_ID":"true"},"maxInstanceCount":3,"ingressSettings":"ALLOW_ALL","uri":"https://monthlytopemployees-646khfvy3a-uc.a.run.app","serviceAccountEmail":"262772715931-compute@developer.gserviceaccount.com","availableMemory":"256Mi","allTrafficOnLatestRevision":true,"revision":"monthlytopemployees-00013-kab","maxInstanceRequestConcurrency":80,"availableCpu":"1"},"state":"ACTIVE","updateTime":"2024-07-27T22:30:04.252935394Z","labels":{"deployment-tool":"cli-firebase","deployment-scheduled":"true","firebase-functions-hash":"2117c2030c96fd4b13c3387fa9530b8179e05c44"},"environment":"GEN_2","url":"https://us-central1-stepps-81d47.cloudfunctions.net/monthlyTopEmployees","createTime":"2024-07-27T14:15:52.354295989Z"},{"name":"projects/stepps-81d47/locations/us-central1/functions/captureYearlyTopEmployees","buildConfig":{"build":"projects/262772715931/locations/us-central1/builds/e9caea31-414e-4f6a-9fec-381d8863112f","runtime":"nodejs18","entryPoint":"captureYearlyTopEmployees","source":{"storageSource":{"bucket":"gcf-v2-sources-262772715931-us-central1","object":"captureYearlyTopEmployees/function-source.zip","generation":"1722119347968164"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"dockerRepository":"projects/stepps-81d47/locations/us-central1/repositories/gcf-artifacts","sourceProvenance":{"resolvedStorageSource":{"bucket":"gcf-v2-sources-262772715931-us-central1","object":"captureYearlyTopEmployees/function-source.zip","generation":"1722119347968164"}},"dockerRegistry":"ARTIFACT_REGISTRY","automaticUpdatePolicy":{}},"serviceConfig":{"service":"projects/stepps-81d47/locations/us-central1/services/captureyearlytopemployees","timeoutSeconds":60,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"stepps-81d47\",\"storageBucket\":\"stepps-81d47.appspot.com\"}","GCLOUD_PROJECT":"stepps-81d47","EVENTARC_CLOUD_EVENT_SOURCE":"projects/stepps-81d47/locations/us-central1/services/captureYearlyTopEmployees","FUNCTION_TARGET":"captureYearlyTopEmployees","LOG_EXECUTION_ID":"true"},"maxInstanceCount":3,"ingressSettings":"ALLOW_ALL","uri":"https://captureyearlytopemployees-646khfvy3a-uc.a.run.app","serviceAccountEmail":"262772715931-compute@developer.gserviceaccount.com","availableMemory":"256Mi","allTrafficOnLatestRevision":true,"revision":"captureyearlytopemployees-00008-nuv","maxInstanceRequestConcurrency":80,"availableCpu":"1"},"state":"ACTIVE","updateTime":"2024-07-27T22:29:57.834640691Z","labels":{"firebase-functions-hash":"2117c2030c96fd4b13c3387fa9530b8179e05c44","deployment-tool":"cli-firebase","deployment-scheduled":"true"},"environment":"GEN_2","url":"https://us-central1-stepps-81d47.cloudfunctions.net/captureYearlyTopEmployees","createTime":"2024-07-27T20:56:45.267565914Z"}]}
+[info] i  functions: ensuring required API cloudscheduler.googleapis.com is enabled... 
+[debug] [2024-07-27T22:31:04.894Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/cloudscheduler.googleapis.com [none]
+[debug] [2024-07-27T22:31:04.895Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/cloudscheduler.googleapis.com x-goog-quota-user=projects/stepps-81d47
+[debug] [2024-07-27T22:31:07.049Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/cloudscheduler.googleapis.com 200
+[debug] [2024-07-27T22:31:07.050Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/cloudscheduler.googleapis.com [omitted]
+[info] +  functions: required API cloudscheduler.googleapis.com is enabled 
+[info] i  functions: ensuring required API run.googleapis.com is enabled... 
+[info] i  functions: ensuring required API eventarc.googleapis.com is enabled... 
+[info] i  functions: ensuring required API pubsub.googleapis.com is enabled... 
+[info] i  functions: ensuring required API storage.googleapis.com is enabled... 
+[debug] [2024-07-27T22:31:07.053Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/run.googleapis.com [none]
+[debug] [2024-07-27T22:31:07.053Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/run.googleapis.com x-goog-quota-user=projects/stepps-81d47
+[debug] [2024-07-27T22:31:07.055Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/eventarc.googleapis.com [none]
+[debug] [2024-07-27T22:31:07.056Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/eventarc.googleapis.com x-goog-quota-user=projects/stepps-81d47
+[debug] [2024-07-27T22:31:07.057Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/pubsub.googleapis.com [none]
+[debug] [2024-07-27T22:31:07.058Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/pubsub.googleapis.com x-goog-quota-user=projects/stepps-81d47
+[debug] [2024-07-27T22:31:07.060Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/storage.googleapis.com [none]
+[debug] [2024-07-27T22:31:07.061Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/storage.googleapis.com x-goog-quota-user=projects/stepps-81d47
+[debug] [2024-07-27T22:31:09.111Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/storage.googleapis.com 200
+[debug] [2024-07-27T22:31:09.112Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/storage.googleapis.com [omitted]
+[info] +  functions: required API storage.googleapis.com is enabled 
+[debug] [2024-07-27T22:31:09.115Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/pubsub.googleapis.com 200
+[debug] [2024-07-27T22:31:09.116Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/pubsub.googleapis.com [omitted]
+[info] +  functions: required API pubsub.googleapis.com is enabled 
+[debug] [2024-07-27T22:31:09.118Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/eventarc.googleapis.com 200
+[debug] [2024-07-27T22:31:09.119Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/eventarc.googleapis.com [omitted]
+[info] +  functions: required API eventarc.googleapis.com is enabled 
+[debug] [2024-07-27T22:31:09.121Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/run.googleapis.com 200
+[debug] [2024-07-27T22:31:09.122Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/stepps-81d47/services/run.googleapis.com [omitted]
+[info] +  functions: required API run.googleapis.com is enabled 
+[info] i  functions: generating the service identity for pubsub.googleapis.com... 
+[info] i  functions: generating the service identity for eventarc.googleapis.com... 
+[debug] [2024-07-27T22:31:09.125Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1beta1/projects/262772715931/services/pubsub.googleapis.com:generateServiceIdentity [none]
+[debug] [2024-07-27T22:31:09.127Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1beta1/projects/262772715931/services/eventarc.googleapis.com:generateServiceIdentity [none]
+[debug] [2024-07-27T22:31:11.454Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1beta1/projects/262772715931/services/eventarc.googleapis.com:generateServiceIdentity 200
+[debug] [2024-07-27T22:31:11.455Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/262772715931/services/eventarc.googleapis.com:generateServiceIdentity {"name":"operations/finished.DONE_OPERATION","done":true,"response":{"@type":"type.googleapis.com/google.api.serviceusage.v1beta1.ServiceIdentity","email":"service-262772715931@gcp-sa-eventarc.iam.gserviceaccount.com","uniqueId":"113281342711226883778"}}
+[debug] [2024-07-27T22:31:11.458Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1beta1/projects/262772715931/services/pubsub.googleapis.com:generateServiceIdentity 200
+[debug] [2024-07-27T22:31:11.459Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/262772715931/services/pubsub.googleapis.com:generateServiceIdentity {"name":"operations/finished.DONE_OPERATION","done":true,"response":{"@type":"type.googleapis.com/google.api.serviceusage.v1beta1.ServiceIdentity","email":"service-262772715931@gcp-sa-pubsub.iam.gserviceaccount.com","uniqueId":"112282242799453938846"}}
+[debug] [2024-07-27T22:31:11.462Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/stepps-81d47 [none]
+[debug] [2024-07-27T22:31:12.177Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/stepps-81d47 200
+[debug] [2024-07-27T22:31:12.179Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/stepps-81d47 {"projectId":"stepps-81d47","projectNumber":"262772715931","displayName":"stepps","name":"projects/stepps-81d47","resources":{"hostingSite":"stepps-81d47"},"state":"ACTIVE","etag":"1_5435c50d-af9b-4ce2-a298-553d756b0031"}
+[info] i  functions: Skipping the deploy of unchanged functions. 
+[info] +  functions[monthlyTopEmployees(us-central1)] Skipped (No changes detected) 
+[info] +  functions[captureYearlyTopEmployees(us-central1)] Skipped (No changes detected) 
+[debug] [2024-07-27T22:31:12.186Z] Total Function Deployment time: 1
+[debug] [2024-07-27T22:31:12.187Z] 0 Functions Deployed
+[debug] [2024-07-27T22:31:12.188Z] 0 Functions Errored
+[debug] [2024-07-27T22:31:12.188Z] 0 Function Deployments Aborted
+[debug] [2024-07-27T22:31:12.189Z] Average Function Deployment time: NaN
+[info] i  functions: cleaning up build files... 
+[debug] [2024-07-27T22:31:12.894Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/stepps-81d47/locations/us-central1/repositories/gcf-artifacts/packages/monthly_top_employees [none]
+[debug] [2024-07-27T22:31:12.898Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/stepps-81d47/locations/us-central1/repositories/gcf-artifacts/packages/capture_yearly_top_employees [none]
+[debug] [2024-07-27T22:31:12.901Z] >>> [apiv2][query] GET https://us.gcr.io/v2/stepps-81d47/gcf/us-central1/tags/list [none]
+[debug] [2024-07-27T22:31:14.125Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/stepps-81d47/locations/us-central1/repositories/gcf-artifacts/packages/monthly_top_employees 404
+[debug] [2024-07-27T22:31:14.126Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/stepps-81d47/locations/us-central1/repositories/gcf-artifacts/packages/monthly_top_employees {"error":{"code":404,"message":"Package \"projects/stepps-81d47/locations/us-central1/repositories/gcf-artifacts/packages/monthly_top_employees\" was not found.","status":"NOT_FOUND"}}
+[debug] [2024-07-27T22:31:14.182Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/stepps-81d47/locations/us-central1/repositories/gcf-artifacts/packages/capture_yearly_top_employees 404
+[debug] [2024-07-27T22:31:14.183Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/stepps-81d47/locations/us-central1/repositories/gcf-artifacts/packages/capture_yearly_top_employees {"error":{"code":404,"message":"Package \"projects/stepps-81d47/locations/us-central1/repositories/gcf-artifacts/packages/capture_yearly_top_employees\" was not found.","status":"NOT_FOUND"}}
+[debug] [2024-07-27T22:31:16.490Z] <<< [apiv2][status] GET https://us.gcr.io/v2/stepps-81d47/gcf/us-central1/tags/list 404
+[debug] [2024-07-27T22:31:16.491Z] <<< [apiv2][body] GET https://us.gcr.io/v2/stepps-81d47/gcf/us-central1/tags/list {"errors":[{"code":"NAME_UNKNOWN","message":"Repository \"us.gcr.io\" not found"}]}
+[debug] [2024-07-27T22:31:16.491Z] Failed docker command with error  HTTP Error: 404, Not Found {"name":"FirebaseError","children":[],"context":{"body":{"errors":[{"code":"NAME_UNKNOWN","message":"Repository \"us.gcr.io\" not found"}],"error":{"message":"Not Found"}},"response":{"statusCode":404}},"exit":1,"message":"HTTP Error: 404, Not Found","status":404}
+[debug] [2024-07-27T22:31:16.505Z] >>> [apiv2][query] GET https://us.gcr.io/v2/stepps-81d47/gcf/us-central1/tags/list [none]
+[debug] [2024-07-27T22:31:17.512Z] <<< [apiv2][status] GET https://us.gcr.io/v2/stepps-81d47/gcf/us-central1/tags/list 404
+[debug] [2024-07-27T22:31:17.513Z] <<< [apiv2][body] GET https://us.gcr.io/v2/stepps-81d47/gcf/us-central1/tags/list {"errors":[{"code":"NAME_UNKNOWN","message":"Repository \"us.gcr.io\" not found"}]}
+[debug] [2024-07-27T22:31:17.514Z] Failed docker command with error  HTTP Error: 404, Not Found {"name":"FirebaseError","children":[],"context":{"body":{"errors":[{"code":"NAME_UNKNOWN","message":"Repository \"us.gcr.io\" not found"}],"error":{"message":"Not Found"}},"response":{"statusCode":404}},"exit":1,"message":"HTTP Error: 404, Not Found","status":404}
+[debug] [2024-07-27T22:31:17.624Z] >>> [apiv2][query] GET https://us.gcr.io/v2/stepps-81d47/gcf/us-central1/tags/list [none]
+[debug] [2024-07-27T22:31:18.723Z] <<< [apiv2][status] GET https://us.gcr.io/v2/stepps-81d47/gcf/us-central1/tags/list 404
+[debug] [2024-07-27T22:31:18.724Z] <<< [apiv2][body] GET https://us.gcr.io/v2/stepps-81d47/gcf/us-central1/tags/list {"errors":[{"code":"NAME_UNKNOWN","message":"Repository \"us.gcr.io\" not found"}]}
+[debug] [2024-07-27T22:31:18.725Z] Failed docker command with error  HTTP Error: 404, Not Found {"name":"FirebaseError","children":[],"context":{"body":{"errors":[{"code":"NAME_UNKNOWN","message":"Repository \"us.gcr.io\" not found"}],"error":{"message":"Not Found"}},"response":{"statusCode":404}},"exit":1,"message":"HTTP Error: 404, Not Found","status":404}
+[warn] !  functions: Unhandled error cleaning up build images. This could result in a small monthly bill if not corrected. You can attempt to delete these images by redeploying or you can delete them manually at https://console.cloud.google.com/gcr/images/stepps-81d47/us/gcf 
+[info] 
+[info] +  Deploy complete! 
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/stepps-81d47/overview

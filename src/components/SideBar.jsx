@@ -6,7 +6,7 @@ import { logoutOut } from "../actions/authActions";
 import { selectUser} from "../slices/authSlice";
 import { useNavigate } from "react-router-dom";
 
-const SideBar = () => {
+const SideBar = ({ onFeedbackClick }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const user = useSelector(selectUser);
@@ -45,7 +45,7 @@ const SideBar = () => {
 
             <ul className='list-unstyled bottom-menu'>
                 <li className='menu-item'>
-                    <NavLink to="/feedback" className={({isActive}) => isActive ? "active-tab" : '' }><span><i class="bi bi-chat-left-dots-fill"></i></span> Feedback</NavLink>
+                    <button type='button' className='feedback-btn' onClick={onFeedbackClick} ><span><i class="bi bi-chat-left-dots-fill"></i></span> Feedback</button>
                 </li>
                 <li className='menu-item'>
                     <button className='logout-btn' onClick={handleLogoutOut}><span><i class="bi bi-box-arrow-right"></i></span> Logout</button>

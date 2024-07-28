@@ -7,11 +7,14 @@ import { POINTS } from '../constants/Points';
 import { fetchEmployees } from '../actions/employeeActions';
 import { selectCurrentUser } from '../slices/userSlice';
 
+const MINIMUM_WORD_COUNT = 10;
+
 const CreateFeed = () => {
     const [selectedEmployee, setSelectedEmployee] = useState(null);
     const [selectedPoints, setSelectedPoints] = useState(null);
     const [selectedImpression, setSelectedImpression] = useState(null);
     const [message, setMessage] = useState('');
+    const [validationErrors, setValidationErrors] = useState({});
     const dispatch = useDispatch();
     const { employeeList, loading, error} = useSelector(state => state.employee);
     const currentUser = useSelector(selectCurrentUser);
@@ -19,8 +22,48 @@ const CreateFeed = () => {
     const handleEmployeeChange = (event, selected) => {
         setSelectedEmployee(selected);
     }
+
+    const handlePointsChange = (points) => {
+        setSelectedPoints(points);
+        setValidationErrors((prevErrors) => ({ ...prevErrors, points: '' }));
+    };
+
+    const handleImpressionChange = (value) => {
+        setSelectedImpression(value);
+        setValidationErrors((prevErrors) => ({ ...prevErrors, impression: '' }));
+    };
+
+    const handleMessageChange = (e) => {
+        setMessage(e.target.value);
+        setValidationErrors((prevErrors) => ({ ...prevErrors, message: '' }));
+    };
+
+    const validateForm = () => {
+        const errors = {};
+        
+        if (!selectedEmployee) {
+            errors.employee = 'Employee selection is required.';
+        }
+        
+        if (!selectedPoints) {
+            errors.points = 'Points selection is required.';
+        }
+        
+        if (!selectedImpression) {
+            errors.impression = 'Impression selection is required.';
+        }
+        
+        if (message.trim().split(/\s+/).length < MINIMUM_WORD_COUNT) {
+            errors.message = `Message must be at least ${MINIMUM_WORD_COUNT} words.`;
+        }
+        
+        setValidationErrors(errors);
+        
+        return Object.keys(errors).length === 0;
+    };
+
     const handlePublishRecognition = () => {
-        // if (!selectedEmployee || !selectedPoints || !selectedImpression) return;
+        if (!validateForm()) return;
 
         const recognitionData = {
             employee: selectedEmployee.id,
@@ -38,6 +81,7 @@ const CreateFeed = () => {
         setSelectedPoints(null);
         setSelectedImpression(null);
         setMessage('');
+        setValidationErrors(null)
     }
 
     const discardCreateRecognition = () => {
@@ -45,6 +89,7 @@ const CreateFeed = () => {
         setSelectedPoints(null);
         setSelectedImpression(null);
         setMessage('');
+        setValidationErrors('')
     }
 
     useEffect(() => {
@@ -72,31 +117,40 @@ const CreateFeed = () => {
                     <div className='points-list'>
                         { POINTS.map((points) => (
                             <div key={points} className="radio-group">
-                                <input type="radio" name="points" id={`point${points}`} value={points} checked={selectedPoints === points} onChange={(e) => setSelectedPoints(points)}/>
+                                <input type="radio" name="points" id={`point${points}`} value={points} checked={selectedPoints === points} onChange={() => handlePointsChange(points)}/>
                                 <label htmlFor={`point${points}`}>{ points }</label>
                             </div>
                         ))}
                     </div>
+                    {validationErrors.points && <p className="error-text">{validationErrors.points}</p>}
+
                     <span>Impression:</span>
                     <div className='impressions'>
-                        <div className="radio-group">
-                            <input type="radio" name='impression' id='thank-you' value="thankyou" onChange={(e) => setSelectedImpression(e.target.value)}/>
-                            <label htmlFor="thank-you">Thank you!</label>
-                        </div>
-                        <div className="radio-group">
-                            <input type="radio" name='impression' id='good-job' value="goodjob" onChange={(e) => setSelectedImpression(e.target.value)}/>
-                            <label htmlFor="good-job">Good job!</label>
-                        </div>
-                        <div className="radio-group">
-                            <input type="radio" name='impression' id='impressive' value="impressive" onChange={(e) => setSelectedImpression(e.target.value)}/>
-                            <label htmlFor="impressive">Impressive!</label>
-                        </div>
-                        <div className="radio-group">
-                            <input type="radio" name='impression' id='exceptional' value="exceptional" onChange={(e) => setSelectedImpression(e.target.value)}/>
-                            <label htmlFor="exceptional">Exceptional!</label>
-                        </div>
+                        {['thankyou', 'goodjob', 'impressive', 'exceptional'].map((value) => (
+                            <div className="radio-group" key={value}>
+                                <input 
+                                    type="radio" 
+                                    name='impression' 
+                                    id={value} 
+                                    value={value} 
+                                    checked={selectedImpression === value}
+                                    onChange={() => handleImpressionChange(value)}
+                                />
+                                <label htmlFor={value}>{value.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}</label>
+                            </div>
+                        ))}
                     </div>
-                    <textarea name="message" id="message" placeholder='Message' value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
+                    {validationErrors.impression && <p className="error-text">{validationErrors.impression}</p>}
+
+                    <textarea 
+                        name="message" 
+                        id="message" 
+                        placeholder='Message' 
+                        value={message} 
+                        onChange={handleMessageChange}
+                        className={validationErrors.message ? 'error' : ''}
+                    ></textarea>
+                    {validationErrors.message && <p className="error-text">{validationErrors.message}</p>}
                     <div className="action-btns">
                         <button className='main-btn' onClick={handlePublishRecognition}>Publish</button>
                         <button className='border-btn' onClick={discardCreateRecognition}>Discard</button>

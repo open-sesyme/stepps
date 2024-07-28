@@ -37,11 +37,12 @@ export const addEmployeeToFirestore = (employeeData) => async (dispatch) => {
     }
 };
 
+
 export const fetchEmployees = () => async (dispatch) => {
     dispatch(fetchEmployeeStart());
+    
     try {
         let q = query(employeeCollectionRef);
-
         const unsubscribe = onSnapshot(q, (snapshot) => {
             const employeeList = snapshot.docs.map((doc) => {
                 let employeeData = doc.data();

@@ -1,74 +1,66 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
-const { collection } = require('firebase/firestore');
+const { onSchedule } = require('firebase-functions/v2/scheduler');
 
 admin.initializeApp();
 
-exports.captureMonthlyTopEmployees = functions.pubsub.schedule('*/3 * * * *')
-    .timeZone('Africa/Johannesburg').onRun(async (context) => {const db = admin.firestore();
-        const now = new Date();
-        const lastDay = new Date(now.getFullYear(), now.getMonth + 1, 0);
+const db = admin.firestore();
+
+exports.monthlyTopEmployees = onSchedule('0 0 1 * *', async () => { 
+    try {
         
-        if (now.getDate() !==lastDay.getDate()) {
-            return null;
-        }
+        const topEmployeeQuery = db.collection('employees')
+            .orderBy('points', 'desc')
+            .limit(3);
 
-        try {
-            const topEmployeeQuerySnapshot = await collection(db,'employees').orderBy('points', 'desc').limit(3).get();
+        const snapshot = await topEmployeeQuery.get();
 
-            const topEmployees = topEmployeeQuerySnapshot.docs.map(doc =>({
-                id: doc.id,
-                ...doc.data()
-            }));
+        const topEmployees = snapshot.docs.map((doc) => {
+            const { email, points } = doc.data();
+            return { id: doc.id, email, points };
+        });
 
-            const monthID = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+        const monthID = `${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, '0')}`;
 
-            const honorsRollRef = collection(db, 'honors_roll').doc(monthID);
-            await honorsRollRef.set({
-                date: admin.firestore.Timestamp.now(),
-                top3: topEmployees
-            });
+        const honorsRollRef = db.collection('honors_roll').doc(monthID);
 
-            console.log('Your report is ready');
-        } catch (error) {
-            console.log('123')
-        }
+        await honorsRollRef.set({
+            date: admin.firestore.Timestamp.now(),
+            top3: topEmployees
+        });
 
-    return null
+        functions.logger.log('Monthly top employees processed successfully.');
+    } catch (error) {
+        functions.logger.error('Error processing top employees:', error.message);
+    }
 });
 
-exports.captureYearlyTopEmployees = functions.pubsub.schedule('*/3 * * * *')
-    .timeZone('Africa/Johannesburg')
-    .onRun(async (context) => {
-        const db = admin.firestore();
+exports.captureYearlyTopEmployees = onSchedule('23 59 30 11 *', async () => {
 
-        console.log("This is a yearly thingy", new Date().toISOString());
+    try {
+        const topEmployeeQuery = db.collection('employees')
+            .orderBy('points', 'desc')
+            .limit(5);
 
-        try {
-            const topEmployeeQuerySnapshot = await collection(db, 'employees')
-                .orderBy('points', 'desc')
-                .limit(5)
-                .get();
+        const snapshot = await topEmployeeQuery.get();
 
-            const topEmployees = topEmployeeQuerySnapshot.docs.map(doc => ({
-                id: doc.id,
-                ...devicePixelRatio.data()
-            }));
+        const topEmployees = snapshot.docs.map((doc) => {
+            const { email, points } = doc.data();
+            return { id: doc.id, email, points };
+        });
 
-            const testDOCId = `test-${new Date().toISOString()}`;
+        const yearlyID = `yearly-${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, '0')}`;
 
-            const honorsRollRef = collection('honors_roll').doc('top');
-            await honorsRollRef.set({
-                date: admin.firestore.Timestamp.now(),
-                top5: topEmployees
-            });
+        const honorsRollRef = db.collection('honors_roll').doc(yearlyID);
 
-            console.log('They are added')
-            
-        } catch (error) {
-            console.log('Running into an error', error.message)
-        }
+        
+        await honorsRollRef.set({
+            date: admin.firestore.Timestamp.now(),
+            top5: topEmployees
+        });
 
-    return null;
-
+        functions.logger.log('Yearly top employees added successfully.');
+    } catch (error) {
+        functions.logger.error('Error running yearly capture:', error.message);
+    }
 });

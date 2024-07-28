@@ -4,6 +4,7 @@ import recognitionReducer from '../slices/recognitionSlice';
 import toastSlice from "../slices/toastSlice";
 import userReducer from "../slices/userSlice"
 import employeeReducer from "../slices/employeeSlice";
+import feedbackReducer from "../slices/feedbackSlice";
 
 const store = configureStore({
     reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
         toast: toastSlice,
         user: userReducer,
         employee: employeeReducer,
+        feedback: feedbackReducer,
     },
 });
 

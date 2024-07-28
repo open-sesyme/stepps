@@ -97,7 +97,7 @@ $transition-style: all .45s ease-in-out;
                 margin-bottom: 0;
             }
 
-            a {
+            a,button {
                 display: block;
                 padding: 10px 20px;
                 text-decoration: none;
@@ -105,6 +105,9 @@ $transition-style: all .45s ease-in-out;
                 font-size: 16px;
                 font-weight: 500;
                 color: $dark-color;
+                width: 100%;
+                background-color: transparent;
+                border: none;
 
                 span {
                     margin-right: 10px;
@@ -119,6 +122,10 @@ $transition-style: all .45s ease-in-out;
                     background-color: darken($bg-color, 5%);
                     transition: $transition-style;
                 }
+            }
+            
+            .feedback-btn {
+                border: 1px solid $text-color;
             }
         }
 
@@ -205,7 +212,63 @@ $transition-style: all .45s ease-in-out;
     border-left: 3px solid red;
     padding: 10px 15px;
     color: $dark-color;
+}
 
+.feedback {
+    position: absolute;
+    width: 100%;
+    max-width: 500px;
+    left: calc(15vw + 1em);
+    bottom: 1em;
+    background-color: white;
+    z-index: 999;
+    padding: 1em;
+    border-radius: 10px;
+
+    .feedback-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1em;
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .close-btn {
+            background-color: transparent;
+            border: 0;
+            font-size: 20px;
+            margin-bottom: 0;
+        }
+    }
+
+    form {
+        textarea {
+            resize: none;
+            height: 100px
+        }
+
+        .main-btn {
+            margin-bottom: 10px;
+        }
+
+        .cancel-btn {
+            width: 100%;
+            padding: 0.5em;
+            color: $dark-color;
+            background-color: white;
+            border-radius: 8px;
+            border: 1px solid $dark-color
+        }
+    }
+}
+
+.error-text {
+    color: red;
+    font-size: 16px;
 }
 
 @import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -215,4 +278,5 @@ $transition-style: all .45s ease-in-out;
 @import 'employees';
 @import 'profile';
 @import 'support';
+@import 'reset_password';
 @import 'testStyle';
