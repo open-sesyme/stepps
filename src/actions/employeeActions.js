@@ -28,7 +28,10 @@ export const addEmployeeToFirestore = (employeeData) => async (dispatch) => {
         const cleanData = removeEmptyFields(rest);
         await setDoc(docRef, { ...cleanData, email, dateCreated, points: 0 });
 
-        await sendPasswordResetEmail(auth, email);
+        await sendPasswordResetEmail(auth, email, {
+            url: 'http://localhost:3000/reset-password',
+            handleCodeInApp: true,
+        });
         console.log("User successfully created and email sent", user);
         
         dispatch(clearEmployeeData());

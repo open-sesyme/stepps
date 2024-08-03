@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import SideBar from '../components/SideBar'
 import { Outlet } from 'react-router-dom'
 import TopMenu from '../components/TopMenu'
